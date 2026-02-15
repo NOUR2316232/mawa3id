@@ -1,0 +1,14 @@
+package com.mawa3id.repository;
+
+import com.mawa3id.model.Availability;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface AvailabilityRepository extends JpaRepository<Availability, UUID> {
+    List<Availability> findByUserId(UUID userId);
+    List<Availability> findByUserIdAndDayOfWeek(UUID userId, Integer dayOfWeek);
+}
