@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { publicBookingAPI } from '../api/client';
 
@@ -7,10 +7,16 @@ const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 const PublicBookingPage = () => {
   const { businessId } = useParams();
+  const location = useLocation();
 
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [profile, setProfile] = useState(null);
+
+  const queryServiceId = useMemo(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('serviceId') || '';
+  }, [location.search]);
 
   const [form, setForm] = useState({
     serviceId: '',
@@ -34,6 +40,17 @@ const PublicBookingPage = () => {
 
     load();
   }, [businessId]);
+
+  useEffect(() => {
+    if (!profile || !queryServiceId) {
+      return;
+    }
+
+    const exists = (profile.services || []).some((service) => service.id === queryServiceId);
+    if (exists) {
+      setForm((prev) => ({ ...prev, serviceId: queryServiceId }));
+    }
+  }, [profile, queryServiceId]);
 
   const selectedService = useMemo(
     () => profile?.services?.find((service) => service.id === form.serviceId),
@@ -69,13 +86,14 @@ const PublicBookingPage = () => {
       });
 
       toast.success('Appointment request sent successfully');
-      setForm({
-        serviceId: '',
+      setForm((prev) => ({
+        ...prev,
+        serviceId: queryServiceId || '',
         appointmentDate: '',
         startTime: '',
         customerName: '',
         customerPhone: '',
-      });
+      }));
     } catch (error) {
       toast.error(error.response?.data?.message || 'Could not create appointment');
     } finally {
