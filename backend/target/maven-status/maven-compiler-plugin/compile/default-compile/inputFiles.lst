@@ -1,4 +1,5 @@
 C:\mawa3id\backend\src\main\java\com\mawa3id\repository\ReminderLogRepository.java
+C:\mawa3id\backend\src\main\java\com\mawa3id\exception\GlobalExceptionHandler.java
 C:\mawa3id\backend\src\main\java\com\mawa3id\service\ReminderService.java
 C:\mawa3id\backend\src\main\java\com\mawa3id\repository\AppointmentRepository.java
 C:\mawa3id\backend\src\main\java\com\mawa3id\dto\LoginRequest.java

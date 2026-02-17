@@ -17,6 +17,7 @@ com\mawa3id\model\ReminderLog$ReminderStatus.class
 com\mawa3id\model\User.class
 com\mawa3id\Mawa3idApplication.class
 com\mawa3id\model\ReminderLog$ReminderType.class
+com\mawa3id\exception\GlobalExceptionHandler.class
 com\mawa3id\repository\UserRepository.class
 com\mawa3id\service\AppointmentService.class
 com\mawa3id\dto\PublicBookingProfileDTO.class
