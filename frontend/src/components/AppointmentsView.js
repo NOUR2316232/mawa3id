@@ -7,7 +7,6 @@ const AppointmentsView = () => {
   const appointments = useAppStore((state) => state.appointments);
   const updateAppointmentStatus = useAppStore((state) => state.updateAppointmentStatus);
   const deleteAppointment = useAppStore((state) => state.deleteAppointment);
-  const isLoading = useAppStore((state) => state.isLoading);
 
   const getStatusIcon = (status) => {
     switch (status) {

@@ -3,7 +3,6 @@ import { useAppStore } from '../store/appStore';
 import { TrendingUp, Users, Calendar, AlertCircle } from 'lucide-react';
 
 const DashboardOverview = () => {
-  const appointments = useAppStore((state) => state.appointments);
   const analytics = useAppStore((state) => state.analytics);
   const fetchAnalytics = useAppStore((state) => state.fetchAnalytics);
 

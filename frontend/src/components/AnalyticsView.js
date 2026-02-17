@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppStore } from '../store/appStore';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const AnalyticsView = () => {
   const analytics = useAppStore((state) => state.analytics);
